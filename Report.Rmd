@@ -123,7 +123,8 @@ ggplot(pleiades, aes(x = parallax)) + geom_histogram(position = "dodge")
 
 ```{r}
 
-summary(pleiades)
+no_na_pleiades <- na.omit(pleiades)
+summary(no_na_pleiades)
 
 
 ```
