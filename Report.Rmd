@@ -207,6 +207,12 @@ a + b + plot_annotation(title = "Appendix X - Location and Proper Motion of Plei
 #ggplot(merge, aes(x = class, y = parallax)) + geom_boxplot()
 ```
 
+Right Ascension (RA) and Declination (DEC) are angular distances which are the astronomical equivalents of latitude and longitude. In other words, they are the position of stars within space.
+
+Looking at the left-side graph, there is a clear difference between the two clusters on both RA and DEC, which shows that they are located in different positions in space.
+
+The proper motions are astronomical equivalents of the movement of the stars in space. Looking at the right-side graph, there again is clear separation in the plots, representing the different directions the clusters are travelling in. The m67 cluster is travelling negatively in both RA and DEC, while the pleiades cluster is travelling positively in RA and more negatively in DEC (compared to the m67 cluster).
+
 ```{r}
 c <- ggplot(merge, aes(x = parallax)) + geom_histogram(aes(fill= class), position = "dodge") + theme(legend.position = "none") + xlab("Parallax (mas)") + ylab("Count") 
 d <- ggplot(merge, aes(x = abM)) + geom_histogram(aes(fill= class), position = "dodge") + xlab("Absolute Magnitude (mag)") + ylab("Count") 
