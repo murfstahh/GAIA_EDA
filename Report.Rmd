@@ -97,10 +97,12 @@ m67$abM <- m67$phot_g_mean_mag - (2.5 * log((m67$distparsecs/10)^2,10))
 #summary of datsets
 ```{r}
 summary(pleiades)
+str(pleiades)
 ```
 
 ```{r}
 summary(m67)
+str(m67)
 ```
 
 #check for missing values
