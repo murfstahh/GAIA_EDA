@@ -122,17 +122,18 @@ ggplot(pleiades, aes(x = parallax)) + geom_histogram(position = "dodge")
 ## TODO comparison of some means of variables
 
 ```{r}
+
 summary(pleiades)
 
 
 ```
 
 ```{r}
-pleiadescorr <- na.omit(pleiades)
-cormat <- round(cor(pleiadescorr),2)
-pandoc.table(cormat)
-melted_cormat <- melt(cormat)
-ggplot(data = melted_cormat, aes(Variable2, Variable1, fill = value))+
+pleiadescorr <- na.omit(pleiades) #removed missing values
+cormatpleiades <- round(cor(pleiadescorr),2)
+pandoc.table(cormatpleiades)
+melted_cormat_pleiades <- melt(cormatpleiades)
+ggplot(data = melted_cormat_pleiades, aes(Var2, Var1, fill = value))+
  geom_tile(color = "white")+
  scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
    midpoint = 0, limit = c(-1,1), space = "Lab", 
@@ -142,6 +143,22 @@ ggplot(data = melted_cormat, aes(Variable2, Variable1, fill = value))+
     size = 12, hjust = 1))+
  coord_fixed()
 
+```
+
+```{r}
+m67corr <- na.omit(m67) #removed missing values
+cormatm67 <- round(cor(m67corr),2)
+pandoc.table(cormatm67)
+melted_cormat_m67 <- melt(cormatm67)
+ggplot(data = melted_cormat_m67, aes(Var2, Var1, fill = value)) +
+ geom_tile(color = "white") +
+ scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+   midpoint = 0, limit = c(-1,1), space = "Lab", 
+   name="Pearson\nCorrelation") +
+  theme_minimal()+ 
+ theme(axis.text.x = element_text(angle = 45, vjust = 1, 
+    size = 12, hjust = 1))+
+ coord_fixed()
 ```
 
 ## HR diagram - use ages of cluster with diagram showing the comparison
