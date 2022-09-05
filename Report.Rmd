@@ -94,6 +94,15 @@ m67$abM <- m67$phot_g_mean_mag - (2.5 * log((m67$distparsecs/10)^2,10))
 
 ```
 
+#summary of datsets
+```{r}
+summary(pleiades)
+```
+
+```{r}
+summary(m67)
+```
+
 #check for missing values
 
 ```{r}
@@ -110,16 +119,14 @@ There are 1 missing values in "bp_rp". All other features in the m67 dataset hav
 
 
 
-## TODO comparison of some means of variables
+## comparison of some means of variables
 
 ```{r}
 
 no_na_pleiades <- na.omit(pleiades)
-summary(no_na_pleiades)
 pleiadesmeans <- colMeans(no_na_pleiades)
 
 no_na_m67 <- na.omit(m67)
-summary(no_na_m67)
 m67means <- colMeans(no_na_m67)
 
 sumtable <- cbind(pleiadesmeans, m67means)
@@ -129,6 +136,7 @@ colnames(sumtable) <- c("Means of Pleiades Dataset", "Means of M67 Dataset")
 pandoc.table(sumtable)
 ```
 
+#correlation of pleiades
 ```{r}
 pleiadescorr <- na.omit(pleiades) #removed missing values
 cormatpleiades <- round(cor(pleiadescorr),2)
@@ -150,6 +158,7 @@ pleiades_corr <- ggplot(data = melted_cormat_pleiades, aes(Var2, Var1, fill = va
 
 ```
 
+#correlation of m67
 ```{r}
 m67corr <- na.omit(m67) #removed missing values
 cormatm67 <- round(cor(m67corr),2)
@@ -170,6 +179,7 @@ m67_corr <- ggplot(data = melted_cormat_m67, aes(Var2, Var1, fill = value)) +
   xlab("Variable 2") + ylab("Variable 1")
 ```
 
+#correlation matrices
 ```{r}
 par(mfrow=c(1,2))
 pleiades_corr
