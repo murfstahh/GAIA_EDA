@@ -9,6 +9,8 @@ knitr::opts_chunk$set(echo = TRUE)
 library(ggplot2)
 library(dplyr)
 library(patchwork)
+library(reshape2)
+library(pander)
 
 ```
 
@@ -122,6 +124,23 @@ ggplot(pleiades, aes(x = parallax)) + geom_histogram(position = "dodge")
 ```{r}
 summary(pleiades)
 
+
+```
+
+```{r}
+pleiadescorr <- na.omit(pleiades)
+cormat <- round(cor(pleiadescorr),2)
+pandoc.table(cormat)
+melted_cormat <- melt(cormat)
+ggplot(data = melted_cormat, aes(Variable2, Variable1, fill = value))+
+ geom_tile(color = "white")+
+ scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+   midpoint = 0, limit = c(-1,1), space = "Lab", 
+   name="Pearson\nCorrelation") +
+  theme_minimal()+ 
+ theme(axis.text.x = element_text(angle = 45, vjust = 1, 
+    size = 12, hjust = 1))+
+ coord_fixed()
 
 ```
 
