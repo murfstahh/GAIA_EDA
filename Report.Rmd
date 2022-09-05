@@ -133,8 +133,11 @@ pandoc.table(sumtable)
 pleiadescorr <- na.omit(pleiades) #removed missing values
 cormatpleiades <- round(cor(pleiadescorr),2)
 pandoc.table(cormatpleiades)
+```
+
+```{r}
 melted_cormat_pleiades <- melt(cormatpleiades)
-ggplot(data = melted_cormat_pleiades, aes(Var2, Var1, fill = value))+
+pleiades_corr <- ggplot(data = melted_cormat_pleiades, aes(Var2, Var1, fill = value))+
  geom_tile(color = "white")+
  scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
    midpoint = 0, limit = c(-1,1), space = "Lab", 
@@ -142,7 +145,8 @@ ggplot(data = melted_cormat_pleiades, aes(Var2, Var1, fill = value))+
   theme_minimal()+ 
  theme(axis.text.x = element_text(angle = 45, vjust = 1, 
     size = 12, hjust = 1))+
- coord_fixed()
+ coord_fixed()+
+  xlab("Variable 2") + ylab("Variable 1")
 
 ```
 
@@ -150,8 +154,11 @@ ggplot(data = melted_cormat_pleiades, aes(Var2, Var1, fill = value))+
 m67corr <- na.omit(m67) #removed missing values
 cormatm67 <- round(cor(m67corr),2)
 pandoc.table(cormatm67)
+```
+
+```{r}
 melted_cormat_m67 <- melt(cormatm67)
-ggplot(data = melted_cormat_m67, aes(Var2, Var1, fill = value)) +
+m67_corr <- ggplot(data = melted_cormat_m67, aes(Var2, Var1, fill = value)) +
  geom_tile(color = "white") +
  scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
    midpoint = 0, limit = c(-1,1), space = "Lab", 
@@ -159,7 +166,14 @@ ggplot(data = melted_cormat_m67, aes(Var2, Var1, fill = value)) +
   theme_minimal()+ 
  theme(axis.text.x = element_text(angle = 45, vjust = 1, 
     size = 12, hjust = 1))+
- coord_fixed()
+ coord_fixed()+
+  xlab("Variable 2") + ylab("Variable 1")
+```
+
+```{r}
+par(mfrow=c(1,2))
+pleiades_corr
+m67_corr
 ```
 
 
