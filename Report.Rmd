@@ -5,7 +5,7 @@ date: "2022-09-03"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 library(ggplot2)
 library(dplyr)
 library(patchwork)
@@ -98,25 +98,6 @@ m67$abM <- m67$phot_g_mean_mag - (2.5 * log((m67$distparsecs/10)^2,10))
 
 
 
-##Display pmra/pmdec plot
-
-```{r}
-ggplot(pleiades, aes(x=pmra, y=pmdec )) +
-  geom_point()
-
-ggplot(m67, aes(x=pmra, y=pmdec )) +
-  geom_point()
-
-pleiades$class <- "Pleiades"
-m67$class <-"m67"
-merge <- rbind(pleiades, m67)
-
-ggplot(merge, aes(x=pmra, y=pmdec )) + geom_point(aes(color =class ))
-ggplot(merge, aes(x=ra, y=dec )) + geom_point(aes(color =class ))
-
-ggplot(pleiades, aes(x = parallax)) + geom_histogram(position = "dodge") 
-
-```
 
 
 ## TODO comparison of some means of variables
@@ -161,6 +142,46 @@ ggplot(data = melted_cormat_m67, aes(Var2, Var1, fill = value)) +
  coord_fixed()
 ```
 
+## Display pmra/pmdec plot
+
+```{r}
+#ggplot(pleiades, aes(x=pmra, y=pmdec )) +
+#  geom_point()
+
+#ggplot(m67, aes(x=pmra, y=pmdec )) +
+#  geom_point()
+
+pleiades$class <- "Pleiades"
+m67$class <-"m67"
+merge <- rbind(pleiades, m67)
+
+
+a <- ggplot(merge, aes(x=ra, y=dec )) + geom_point()+ theme(legend.position = "none") + xlab("Right Ascension / RA (deg)") + ylab("Declination / DEC (deg)") +  annotate("text", x=72, y=24, label= "Pleiades") +  annotate("text", x = 120, y=12, label = "m67")
+
+
+b <- ggplot(merge, aes(x=pmra, y=pmdec)) + geom_point() + theme(legend.position = "none") + xlab("Proper Motion in RA Direction (mas**yr-1)") + ylab("Proper Motion in DEC Direction (mas**yr-1)") +  annotate("text", x=7.5, y=-45, label= "Pleiades") +  annotate("text", x = -6.5, y= -2.5, label = "m67")
+
+
+
+
+t <- theme(plot.title = element_text(face="bold"))
+a + b + plot_annotation(title = "Appendix X - Location and Proper Motion of Pleiades and m67", theme = t) 
+
+#ggplot(merge, aes(x = class, y = abM)) + geom_boxplot()
+#ggplot(merge, aes(x = class, y = parallax)) + geom_boxplot()
+```
+```{r}
+
+c <- ggplot(merge, aes(x = parallax)) + geom_histogram(aes(fill= class), position = "dodge") + theme(legend.position = "none") + xlab("Parallax (mas)") + ylab("Count") 
+
+d <- ggplot(merge, aes(x = abM)) + geom_histogram(aes(fill= class), position = "dodge") + xlab("Absolute Magnitude (mag)") + ylab("Count") 
+
+
+t <- theme(plot.title = element_text(face="bold"))
+c + d + plot_annotation(title = "Appendix X - Parallax and Absolute Magnitude of Pleiades and m67", theme = t) 
+
+```
+
 ## HR diagram - use ages of cluster with diagram showing the comparison
 ```{r}
 
@@ -178,21 +199,30 @@ t <- theme(plot.title = element_text(face="bold"))
 a + b + plot_annotation(title = "Appendix X - Hertzsprung–Russell diagram between 2 open clusters", theme = t) 
 
 
-
-#ggplot(merge, aes(x=bp_rp, y=abM)) +
-#  geom_point(aes(color = class))+ scale_y_reverse()
-
 ```
 
-IF MORE NEEDED:
+Figure X shows a colour-magnitude diagram of the two clusters. This shows the relationship between the Absolute Magnitude and BP-RP colours. Absolute magnitude is a term referring to the intrinsic brightness of a star, which was calculated using the distance of the star (parallax) with the observed colour from earth (phot_g_mean_mag or apparent magnitude). BP-RP colour represents the 
 
 
-- Matariki constellation subset
-
-Different to the pleiades subset since some of the stars are missing proper motions/ parallax
+From this diagram we are able to estimate the age of the clusters. Pleiades is a young open cluster, meaning it has a lot of its stars on the 'main sequence'. On the other hand, m67 is a much older cluster, meaning the stars near the upper ends appear to tail off.
 
 
-- Stars vs Quasars vs Galaxies 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
