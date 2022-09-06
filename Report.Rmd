@@ -100,11 +100,8 @@ m67 <- read.csv("m67-result.csv")
 m67$distparsecs <- 1/(m67$parallax/1000)
 m67$abM <- m67$phot_g_mean_mag - (2.5 * log((m67$distparsecs/10)^2,10))
 
-merge_summary <- rbind(pleiades, m67)
-
 
 ```
-
 
 The 9 features we are looking at are "ra", "dec", "pmra", "pmdec", "parallax", "bp_rp", "phot_g_mean_mag", "distparsecs" and "abM".
 
