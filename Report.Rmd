@@ -11,6 +11,7 @@ library(dplyr)
 library(patchwork)
 library(reshape2)
 library(pander)
+library(psych)
 
 ```
 
@@ -103,6 +104,7 @@ str(pleiades)
 ```{r}
 summary(m67)
 str(m67)
+describe(m67)
 ```
 
 #check for missing values
@@ -121,7 +123,7 @@ There are 1 missing values in "bp_rp". All other features in the m67 dataset hav
 
 
 
-## comparison of some means of variables
+## Comparison of Means between Clusters
 
 ```{r}
 
@@ -135,7 +137,7 @@ sumtable <- cbind(pleiadesmeans, m67means)
 sumtable <- as.data.frame(sumtable)
 
 colnames(sumtable) <- c("Means of Pleiades Dataset", "Means of M67 Dataset")
-pandoc.table(sumtable)
+knitr::kable(sumtable)
 ```
 
 #correlation of pleiades
@@ -207,12 +209,23 @@ a + b + plot_annotation(title = "Appendix X - Location and Proper Motion of Plei
 #ggplot(merge, aes(x = class, y = parallax)) + geom_boxplot()
 ```
 
+Right Ascension (RA) and Declination (DEC) are angular distances which are the astronomical equivalents of latitude and longitude. In other words, they are the position of stars within space.
+
+Looking at the left-side graph, there is a clear difference between the two clusters on both RA and DEC, which shows that they are located in different positions in space.
+
+The proper motions are astronomical equivalents of the movement of the stars in space. Looking at the right-side graph, there again is clear separation in the plots, representing the different directions the clusters are travelling in. The m67 cluster is travelling negatively in both RA and DEC, while the pleiades cluster is travelling positively in RA and more negatively in DEC (compared to the m67 cluster).
+
 ```{r}
 c <- ggplot(merge, aes(x = parallax)) + geom_histogram(aes(fill= class), position = "dodge") + theme(legend.position = "none") + xlab("Parallax (mas)") + ylab("Count") 
-d <- ggplot(merge, aes(x = abM)) + geom_histogram(aes(fill= class), position = "dodge") + xlab("Absolute Magnitude (mag)") + ylab("Count") 
+d <- ggplot(merge, aes(x = phot_g_mean_mag)) + geom_histogram(aes(fill= class), position = "dodge") + xlab("Apparent Magnitude (mag)") + ylab("Count") + labs(fill = "Cluster")
 t <- theme(plot.title = element_text(face="bold"))
-c + d + plot_annotation(title = "Appendix X - Parallax and Absolute Magnitude of Pleiades and m67", theme = t) 
+c + d + plot_annotation(title = "Appendix X - Parallax and Apparent Magnitude of Pleiades and m67", theme = t) 
 ```
+Parallax is a measurement which is used to estimate the distance of the star from earth, using the observed displacement of the star caused by the change of the point of view.
+
+Looking at the left-side histogram, we see that the m67 cluster has a large collection of stars with a parallax roughly around 1, which matches the mean value of 1.16 (2 d.p) in the summary table. The Pleiades cluster has a large collection of stars around 7.5, which is close to the mean value of 7.28 (2 d.p) in the summary table. The distribution of parallax measurements for the Pleiades cluster is wider than the m67 cluster, which might mean that the Pleiades cluster is widely spread or the data needs more filtering.
+
+Apparent magnitude is 
 
 
 ## HR diagram - use ages of cluster with diagram showing the comparison
@@ -230,8 +243,7 @@ a + b + plot_annotation(title = "Appendix X - Hertzsprung–Russell diagram betw
 Figure X shows a colour-magnitude diagram of the two clusters. This shows the relationship between the Absolute Magnitude and BP-RP colours. Absolute magnitude is a term referring to the intrinsic brightness of a star, which was calculated using the distance of the star (parallax) with the observed colour from earth (phot_g_mean_mag or apparent magnitude). BP-RP colour represents the 
 
 
-From this diagram we are able to estimate the age of the clusters. Pleiades is a young open cluster, meaning it has a lot of its stars on the 'main sequence'. On the other hand, m67 is a much older cluster, meaning the stars near the upper ends appear to tail off.
-
+From this diagram we are able to estimate the age of the clusters (reference). Pleiades is a young open cluster, meaning it has a lot of its stars on the 'main sequence'. On the other hand, m67 is a much older cluster, meaning the stars near the upper ends appear to tail off . Note that this is outside the scope of the EDA, but is useful to show to guide future analysis.
 
 
 
