@@ -19,7 +19,7 @@ Title
 
 Taine Murphy - 300472954    
 Van   
-Max   
+Max - 300526544
 
 Background and Data [1-3 pages] 
 • State which dataset(s) your group worked on, and their source 
@@ -151,12 +151,12 @@ pleiades_corr <- ggplot(data = melted_cormat_pleiades, aes(Var2, Var1, fill = va
  geom_tile(color = "white")+
  scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
    midpoint = 0, limit = c(-1,1), space = "Lab", 
-   name="Pearson\nCorrelation") +
+   name="Pearson\nCorrelation\nof\nM67\nFeatures") +
   theme_minimal()+ 
  theme(axis.text.x = element_text(angle = 45, vjust = 1, 
     size = 12, hjust = 1))+
  coord_fixed()+
-  xlab("Variable 2") + ylab("Variable 1")
+  xlab("Variable 2") + ylab("Variable 1") + ggtitle("Correlation of Pleiades Features")
 
 ```
 
@@ -173,12 +173,12 @@ m67_corr <- ggplot(data = melted_cormat_m67, aes(Var2, Var1, fill = value)) +
  geom_tile(color = "white") +
  scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
    midpoint = 0, limit = c(-1,1), space = "Lab", 
-   name="Pearson\nCorrelation") +
+   name="Pearson\nCorrelation\nof\nM67\nFeatures") +
   theme_minimal()+ 
  theme(axis.text.x = element_text(angle = 45, vjust = 1, 
     size = 12, hjust = 1))+
  coord_fixed()+
-  xlab("Variable 2") + ylab("Variable 1")
+  xlab("Variable 2") + ylab("Variable 1") + ggtitle("Correlation of M67 Features")
 ```
 
 #correlation matrices
