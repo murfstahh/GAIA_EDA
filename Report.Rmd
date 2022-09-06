@@ -144,9 +144,9 @@ colnames(sumtable) <- c("Means of Pleiades Dataset", "Means of M67 Dataset")
 sumtable
 knitr::kable(sumtable)
 ```
-The mean Right Ascension of M67 is greater than the mean Right Ascension of Pleiades which means that the M67 cluster is further eastward along the celestial equator from the Sun than the Pleiades cluster.
+The mean Right Ascension of M67 is greater than the mean Right Ascension of Pleiades which means that the M67 cluster is positioned further eastward along the celestial equator from the Sun than the Pleiades cluster.
 
-The mean declination of Pleiades is greater than the mean declination of M67 which means that the Pleiades cluster is further North of the celestial sphere than the M67 cluster.
+The mean declination of Pleiades is greater than the mean declination of M67 which means that the Pleiades cluster is positioned further North of the celestial sphere than the M67 cluster.
 
 The mean proper motion Right Ascension of Pleiades is positive while the mean proper motion Right Ascension of M67 is negative meaning that the Pleiades cluster is moving eastward along the celestial equator while the M67 cluster is moving westward of the celestial equator.
 
@@ -154,7 +154,7 @@ The mean proper motion declination of M67 and Pleiades are negative but the Plei
 
 The mean parallax of the Pleiades cluster is greater than the parallax of the M67 cluster which means that the Pleiades cluster appears closer to Earth than the M67 cluster.
 
-The mean bp_rp of the Pleiades cluster is greater than the mean bp_rp of the M67 cluster which means on average, Pleiades has bluer stars than M67. Which in turn means that on average Pleiades has hotter stars than M67.
+The mean bp_rp of the Pleiades cluster is greater than the mean bp_rp of the M67 cluster which means on average, Pleiades has redder stars than M67. Which in turn means that on average M67 has hotter stars than Pleiades.
 
 The mean absolute magnitude of M67 is greater than the mean absolute magnitude of Pleiades which means the M67 cluster has, on average, intrinsically brighter stars than the Pleiades cluster. 
 
