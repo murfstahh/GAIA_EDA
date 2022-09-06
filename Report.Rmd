@@ -90,12 +90,28 @@ m67 <- read.csv("m67-result.csv")
 m67$distparsecs <- 1/(m67$parallax/1000)
 m67$abM <- m67$phot_g_mean_mag - (2.5 * log((m67$distparsecs/10)^2,10))
 
-merge_summary <- rbind(pleiades, m67)
-
 
 ```
 
-The 9 features we are looking at 
+The 9 features we are looking at are "ra", "dec", "pmra", "pmdec", "parallax", "bp_rp", "phot_g_mean_mag", "distparsecs" and "abM".
+
+Ra and Dec stand for Right Ascension and Declination respectively. They are to the sky what longitude and latitude are to the surface of the Earth. Right Ascension corresponds to east/west direction (like longitude), while Declination measures north/south directions, like latitude.
+
+PmRA and PmDec are proper motion in right ascension direction and declination direction respectively. This is the local tangent plane projection of the proper motion vector in the direction of increasing right ascension and increasing declination.
+
+Parallax is the apparent displacement of an object because of a change in the observer's point of view. Astronomers can use insights derived from the parallax measurements of the closer stars to estimate distances of those more distant.
+
+Bp_rp is the colour of each star. More specifically, how blue it is. The more blue a star is, the higher its temperature.
+
+Phot_g_mean_mag is the mean magnitude in the G band. This is computed from the G-band mean flux applying the magnitude zero-point in the Vega scale.
+
+DistParsecs is the distance of a parsec which is 1 divided by the parallax divided by 1000. A parsec is a unit of distance used in astronomy.
+
+Absolute magnitude is the intrinsic brightness of a star. This is calculated with the parallax and the observed colour from Earth.
+
+
+
+
 
 #summary of datsets
 ```{r}
@@ -197,32 +213,7 @@ pleiades_corr
 m67_corr
 ```
 
-#merged correlation
 
-```{r}
-corr <- na.omit(merge_summary)
-cormat <- round(cor(corr),2)
-pandoc.table(cormat)
-
-
-```
-
-```{r}
-melted_cormat <- melt(cormat)
-ggplot(data = melted_cormat, aes(Var2, Var1, fill = value)) +
- geom_tile(color = "white") +
- scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
-   midpoint = 0, limit = c(-1,1), space = "Lab", 
-   name="Pearson\nCorrelation\nof\nFeatures") +
-  theme_minimal()+ 
- theme(axis.text.x = element_text(angle = 45, vjust = 1, 
-    size = 12, hjust = 1))+
- coord_fixed()+
-  xlab("Variable 2") + ylab("Variable 1") + ggtitle("Correlation of Features")+geom_tile() +
-geom_text(aes(Var2, Var1, label = value),
-          color = "black", size = 2)
-
-```
 ## Display pmra/pmdec plot
 
 ```{r}
