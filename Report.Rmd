@@ -152,6 +152,12 @@ The mean proper motion Right Ascension of Pleiades is positive while the mean pr
 
 The mean proper motion declination of M67 and Pleiades are negative but the Pleiades cluster has a much greater absolute value than M67 so the Pleiades cluster moves South of the celestial sphere faster than the M67 cluster.
 
+The mean parallax of the Pleiades cluster is greater than the parallax of the M67 cluster which means that the Pleiades cluster appears closer to Earth than the M67 cluster.
+
+The mean bp_rp of the Pleiades cluster is greater than the mean bp_rp of the M67 cluster which means on average, Pleiades has bluer stars than M67. Which in turn means that on average Pleiades has hotter stars than M67.
+
+The mean absolute magnitude of M67 is greater than the mean absolute magnitude of Pleiades which means the M67 cluster has, on average, intrinsically brighter stars than the Pleiades cluster. 
+
 
 
 
