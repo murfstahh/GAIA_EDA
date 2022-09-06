@@ -141,8 +141,20 @@ sumtable <- cbind(pleiadesmeans, m67means)
 sumtable <- as.data.frame(sumtable)
 
 colnames(sumtable) <- c("Means of Pleiades Dataset", "Means of M67 Dataset")
+sumtable
 knitr::kable(sumtable)
 ```
+The mean Right Ascension of M67 is greater than the mean Right Ascension of Pleiades which means that the M67 cluster is further eastward along the celestial equator from the Sun than the Pleiades cluster.
+
+The mean declination of Pleiades is greater than the mean declination of M67 which means that the Pleiades cluster is further North of the celestial sphere than the M67 cluster.
+
+The mean proper motion Right Ascension of Pleiades is positive while the mean proper motion Right Ascension of M67 is negative meaning that the Pleiades cluster is moving eastward along the celestial equator while the M67 cluster is moving westward of the celestial equator.
+
+The mean proper motion declination of M67 and Pleiades are negative but the Pleiades cluster has a much greater absolute value than M67 so the Pleiades cluster moves South of the celestial sphere faster than the M67 cluster.
+
+
+
+
 
 
 ```{r}
@@ -214,10 +226,10 @@ Apparent magnitude is the perceived brightness of a star, which relates to the b
 ```{r}
 a <- ggplot(pleiades, aes(x=bp_rp, y=abM)) +
   geom_point(size= 0.5)+ scale_y_reverse()+ xlim(-1,4) + ylim(17,-5) + coord_fixed(0.25) + ggtitle("Pleiades") +
-  xlab("bp_rp") + ylab("Absolute Magnitude")
+  xlab("BP-RP colour (mag)") + ylab("Absolute Magnitude (mag)")
 b <- ggplot(m67, aes(x=bp_rp, y=abM)) +
   geom_point(size= 0.5)+ scale_y_reverse() + xlim(-1,4) + ylim(17,-5) + coord_fixed(0.25) + ggtitle("m67") +
-  xlab("bp_rp") + ylab("Absolute Magnitude")
+  xlab("BP-RP colour (mag)") + ylab("Absolute Magnitude (mag)")
 
 a + b 
 ```
