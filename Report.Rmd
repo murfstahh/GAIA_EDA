@@ -158,7 +158,9 @@ pleiades_corr <- ggplot(data = melted_cormat_pleiades, aes(Var2, Var1, fill = va
  theme(axis.text.x = element_text(angle = 45, vjust = 1, 
     size = 12, hjust = 1))+
  coord_fixed()+
-  xlab("Variable 2") + ylab("Variable 1") + ggtitle("Correlation of Pleiades Features")
+  xlab("Variable 2") + ylab("Variable 1") + ggtitle("Correlation of Pleiades Features") + geom_tile() +
+geom_text(aes(Var2, Var1, label = value),
+          color = "black", size = 4)
 
 ```
 
@@ -180,7 +182,9 @@ m67_corr <- ggplot(data = melted_cormat_m67, aes(Var2, Var1, fill = value)) +
  theme(axis.text.x = element_text(angle = 45, vjust = 1, 
     size = 12, hjust = 1))+
  coord_fixed()+
-  xlab("Variable 2") + ylab("Variable 1") + ggtitle("Correlation of M67 Features")
+  xlab("Variable 2") + ylab("Variable 1") + ggtitle("Correlation of M67 Features")+geom_tile() +
+geom_text(aes(Var2, Var1, label = value),
+          color = "black", size = 2)
 ```
 
 #correlation matrices
