@@ -120,6 +120,21 @@ m67$abM <- m67$phot_g_mean_mag - (2.5 * log((m67$distparsecs/10)^2,10))
 ```
 
 
+Ra and Dec stand for Right Ascension and Declination respectively. They are to the sky what longitude and latitude are to the surface of the Earth. Right Ascension corresponds to east/west direction (like longitude), while Declination measures north/south directions, like latitude.
+
+PmRA and PmDec are proper motion in right ascension direction and declination direction respectively. This is the local tangent plane projection of the proper motion vector in the direction of increasing right ascension and increasing declination.
+
+Parallax is the apparent displacement of an object because of a change in the observer's point of view. Astronomers can use insights derived from the parallax measurements of the closer stars to estimate distances of those more distant.
+
+Bp_rp is the colour of each star. More specifically, how blue it is. The more blue a star is, the higher its temperature.
+
+Phot_g_mean_mag is the mean magnitude in the G band. This is computed from the G-band mean flux applying the magnitude zero-point in the Vega scale.
+
+DistParsecs is the distance of a parsec which is 1 divided by the parallax divided by 1000. A parsec is a unit of distance used in astronomy.
+
+Absolute magnitude is the intrinsic brightness of a star. This is calculated with the parallax and the observed colour from Earth.
+
+We chose these paticular features because we wanted to isolate the most consistent, non-redundant, and relevant features to get the best insight into the GAIA dataset. We wanted a small number of features that are easy to explain because data that is too complex and unexplainable is not valuable. We especially wanted to look at position, distance, temperature, movement and brightness of the stars in the dataset and those are the features we thought would give us the best understanding.
 
  
 
