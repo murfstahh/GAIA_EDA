@@ -30,7 +30,7 @@ This project has made use of the GAIA data set produced by the European Space Ag
 
 The GAIA  data records information on location, proper motions, parallax, colour, magnitude, etc., of billion celestial objects, from which a three-dimensional mapping of the Galaxy is formed (Gaia Collaboration et al. (2016b): The Gaia mission). The GAIA instruments and payload setup allow the European Space Agency (ESA) to detect even the faintest objects and observe them a few times a year at different positions on the sky. With such information, GAIA has the power to unveil the Galaxy’s history and also predict its future.
 
-The team is intrigued by the idea of unravelling the Galaxy’s origin and evolution. We are also motivated to obtain more astronomy knowledge. As a result, we choose the GAIA data set to base our project. Out of billions of objects in the Galaxy, we are especially interested in knowing more about open clusters. We hope to use the GAIA data to provide insights into some of the most famous open clusters, Pleiades and M67.
+The team is intrigued by the idea of unraveling the Galaxy’s origin and evolution. We are also motivated to obtain more astronomy knowledge. As a result, we choose the GAIA data set to base our project. Out of billions of objects in the Galaxy, we are especially interested in knowing more about open clusters. We hope to use the GAIA data to provide insights into some of the most famous open clusters, Pleiades and M67.
 
 
 ### Data Summary
@@ -188,6 +188,9 @@ pleiades_corr
 
 ```
 
+The heat map, or correlation matrix illustrate the relationship among used variables. The redder the color, the more positively correlated the variables are (correlation stats is closer to 1.0). A neutral color indicates that there is little correlation among the variables, as correlation stats is closer to 0. Meanwhile, if correlation stats is negative and closer to -1, it means the variables are negatively correlated.
+
+Most easily seen from the heat map, abM and bp_rp correlation is very close to 1, meaning they have a strong positively correlated relationship. As absolute magnitude (abM) is a measure of s celestial object’s intrinsic luminosity, it makes sense to be highly correlated with bp_rp, the color magnitude. A smaller bp_rp indicates that the star is bluer, meaning that it is hotter. Hotter and bluer stars are normally younger ones that remain on the main sequence where it burns its hydrogen ( will be further discussed in the HR diagram below). Meanwhile, older stars appear redder, while in fact colder with a greater bp_rp number. These old stars have mostly burnt up all of their hydrogen, and slowly dying. The process of burning hydrogen increases its luminosity and thus putting it on a higher end of abM.
 
 ## Figure 5 - Location and Proper Motion of Pleiades and m67
 
