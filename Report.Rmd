@@ -142,8 +142,13 @@ sumtable <- cbind(pleiadesmeans, m67means)
 sumtable <- as.data.frame(sumtable)
 
 colnames(sumtable) <- c("Means of Pleiades Dataset", "Means of M67 Dataset")
+sumtable
 knitr::kable(sumtable)
 ```
+The Right Ascension of M67 is greater than the Right Ascension of Pleiades which means that the M67 cluster is further eastward along the celestial equator from the Sun than the Pleiades cluster.
+
+The declination of Pleiades is greater than the declination of M67 which means that the Pleiades cluster is further North of the celestial sphere than the M67 cluster.
+
 
 
 ```{r}
@@ -162,7 +167,7 @@ pleiades_corr <- ggplot(data = melted_cormat_pleiades, aes(Var2, Var1, fill = va
  theme(axis.text.x = element_text(angle = 45, vjust = 1, 
     size = 12, hjust = 1))+
  coord_fixed()+
-  xlab("") + ylab("") + ggtitle("Correlation of Pleiades Features") + geom_tile() +
+  xlab("") + ylab("") + ggtitle("Correlation of Features") + geom_tile() +
 geom_text(aes(Var2, Var1, label = value),
           color = "black", size = 2)
 
