@@ -119,7 +119,7 @@ DistParsecs is the distance of a parsec which is 1 divided by the parallax divid
 
 Absolute magnitude is the intrinsic brightness of a star. This is calculated with the parallax and the observed colour from Earth.
 
-We chose these paticular features because we wanted to isolate the most consistent, non-redundant, and relevant features to get the best insight into the GAIA dataset. We wanted a small number of features that are easy to explain because data that is too complex and unexplainable is not valuable. We especially wanted to look at position, distance, temperature and brightness of the stars in the dataset and those are the features we thought would give us the best understanding.
+We chose these paticular features because we wanted to isolate the most consistent, non-redundant, and relevant features to get the best insight into the GAIA dataset. We wanted a small number of features that are easy to explain because data that is too complex and unexplainable is not valuable. We especially wanted to look at position, distance, temperature, movement and brightness of the stars in the dataset and those are the features we thought would give us the best understanding.
 
  
 
