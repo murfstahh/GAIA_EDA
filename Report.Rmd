@@ -6,7 +6,7 @@ author: " Taine Murphy - 300472954,  Van Vo - 300520137, Max Tan - 300526544 "
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.align="center")
 library(ggplot2)
 library(dplyr)
 library(patchwork)
@@ -207,7 +207,7 @@ Parallax is a measurement which is used to estimate the distance of the star fro
 
 Looking at the left-side histogram, we see that the m67 cluster has a large collection of stars with a parallax roughly around 1, which matches the mean value of 1.16 (2 d.p) in the summary table. The Pleiades cluster has a large collection of stars around 7.5, which is close to the mean value of 7.28 (2 d.p) in the summary table. The distribution of parallax measurements for the Pleiades cluster is wider than the m67 cluster, which might mean that the Pleiades cluster is widely spread or the data needs more filtering.
 
-Apparent magnitude is 
+Apparent magnitude is the perceived brightness of a star, which relates to the brightness that we can see from earth. The lower the magnitude, the brighter the star. Both clusters appear to have quite similar Apparent magnitudes, with m67 possibly appearing slightly brighter. But accounting for the distance from earth of the stars, m67 will be even more intrinsically brighter compared to Pleiades, as the m67 cluster is further away and therefore will look less brighter than it actually is.
 
 
 ```{r}
@@ -224,7 +224,7 @@ a + b + plot_annotation(title = "Appendix X - Hertzsprung–Russell diagram betw
 
 Figure X shows a colour-magnitude diagram of the two clusters. This shows the relationship between the Absolute Magnitude and BP-RP colours. Absolute magnitude is a term referring to the intrinsic brightness of a star, which was calculated using the distance of the star (parallax) with the observed colour from earth (phot_g_mean_mag or apparent magnitude). BP-RP colour represents the colors magnitude of the stars. A smaller BP-RP number indicates that the star appears bluer, and thus hotter; meanwhile a large BP-RP implies that the star has cooled off and is redder in appearance.
 
-From this diagram we are able to estimate the age of the clusters (Palma, 2020). Pleiades has most of its stars on the 'main sequence', where they burn their hydrogen throughout their life time. On the other hand, many of the stars in M67 tails off of the main sequence, meaning they are dying stars that have already burnt out of hydrogen. As a consequence they move slower and fall behind. Therefore, we can conclude that the Pleiades is a much younger cluster that is still moving and burning; whereas M67 is older, and slowing down.  Note that this is outside the scope of the EDA, but is useful to show to guide future analysis.
+From this diagram we are able to estimate the age of the clusters (Palma, 2020). Pleiades has most of its stars on the 'main sequence', where they burn their hydrogen throughout their life time. On the other hand, many of the stars in M67 tails off of the main sequence, meaning they are dying stars that have already burnt out of hydrogen. As a consequence they move slower and fall behind. Therefore, we can conclude that the Pleiades is a much younger cluster that is still moving and burning; whereas M67 is older, and slowing down. Note that this age estimation is outside the scope of the EDA, but the plot is useful to guide future analysis.
 
 # Individual Contributions [1 page] 
 
