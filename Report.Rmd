@@ -24,7 +24,7 @@ This work has made use of data from the European Space Agency (ESA) mission Gaia
 
 
 
-## Background and Data [1-3 pages] 
+# Background and Data [1-3 pages] 
 
 This project has made use of the GAIA data set produced by the European Space Agency, from mission GAIA (https://www.cosmos.esa.int/gaia). Mission GAIA is launched to record the movement and position of billion objects in the sky, with a purpose to gain deeper understanding of the history and evolution of the Galaxy.
 
@@ -80,7 +80,7 @@ Absolute magnitude is the intrinsic brightness of a star. This is calculated wit
 
 We chose these paticular features because we wanted to isolate the most consistent, non-redundant, and relevant features to get the best insight into the GAIA dataset. We wanted a small number of features that are easy to explain because data that is too complex and unexplainable is not valuable. We especially wanted to look at position, distance, temperature, movement and brightness of the stars in the dataset and those are the features we thought would give us the best understanding.
 
-## Ethics, Privacy and Security [1-2 pages] 
+# Ethics, Privacy and Security [1-2 pages] 
 
 One of the most important ethical considerations we emphasise is properly acknowledging the authorship of the GAIA data in our project. Authorship and accreditation are ultimately important, especially in scientific research, as they proclaim the contribution one has made to broaden our understanding of a specific matter. Thus, we want to ensure ethical sourcing of the GAIA data by giving credit to the people and institutes that have worked hard to make the GAIA data accessible to the public. Therefore, throughout the report, a frequent acknowledgement will be dedicated to the European Space Agency, and there will be citations of their work.
 
@@ -96,8 +96,6 @@ There are few privacy and confidentiality concerns, as the data is not about peo
 # Exploratory Data Analysis [3-6 pages] 
 
 
-## Open cluster subsets: m67 and Pleiades
-
 ```{r}
 pleiades <- read.csv("pleiades-result.csv")
 pleiades$distparsecs <- 1/(pleiades$parallax/1000)
@@ -112,22 +110,9 @@ m67$abM <- m67$phot_g_mean_mag - (2.5 * log((m67$distparsecs/10)^2,10))
 ```
 
 
- 
 
-#summary of datsets
-```{r}
-summary(pleiades)
-str(pleiades)
-describe(m67)
-```
 
-```{r}
-summary(m67)
-str(m67)
-describe(m67)
-```
-
-#check for missing values
+### Check for missing values
 
 ```{r}
 colSums(is.na(pleiades))
@@ -160,11 +145,10 @@ colnames(sumtable) <- c("Means of Pleiades Dataset", "Means of M67 Dataset")
 knitr::kable(sumtable)
 ```
 
-#correlation of pleiades
+
 ```{r}
 pleiadescorr <- na.omit(pleiades) #removed missing values
 cormatpleiades <- round(cor(pleiadescorr),2)
-pandoc.table(cormatpleiades)
 ```
 
 ```{r}
@@ -173,54 +157,30 @@ pleiades_corr <- ggplot(data = melted_cormat_pleiades, aes(Var2, Var1, fill = va
  geom_tile(color = "white")+
  scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
    midpoint = 0, limit = c(-1,1), space = "Lab", 
-   name="Pearson\nCorrelation\nof\nPleiades\nFeatures") +
+   name="Pearson\nCorrelation") +
   theme_minimal()+ 
  theme(axis.text.x = element_text(angle = 45, vjust = 1, 
     size = 12, hjust = 1))+
  coord_fixed()+
-  xlab("Variable 2") + ylab("Variable 1") + ggtitle("Correlation of Pleiades Features") + geom_tile() +
+  xlab("") + ylab("") + ggtitle("Correlation of Pleiades Features") + geom_tile() +
 geom_text(aes(Var2, Var1, label = value),
           color = "black", size = 2)
 
 ```
 
-#correlation of m67
-```{r}
-m67corr <- na.omit(m67) #removed missing values
-cormatm67 <- round(cor(m67corr),2)
-pandoc.table(cormatm67)
-```
 
-```{r}
-melted_cormat_m67 <- melt(cormatm67)
-m67_corr <- ggplot(data = melted_cormat_m67, aes(Var2, Var1, fill = value)) +
- geom_tile(color = "white") +
- scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
-   midpoint = 0, limit = c(-1,1), space = "Lab", 
-   name="Pearson\nCorrelation\nof\nM67\nFeatures") +
-  theme_minimal()+ 
- theme(axis.text.x = element_text(angle = 45, vjust = 1, 
-    size = 12, hjust = 1))+
- coord_fixed()+
-  xlab("Variable 2") + ylab("Variable 1") + ggtitle("Correlation of M67 Features")+geom_tile() +
-geom_text(aes(Var2, Var1, label = value),
-          color = "black", size = 2)
-```
 
-#correlation matrices
+
+## Correlation matrix
 ```{r}
-par(mfrow=c(1,2))
 pleiades_corr
-m67_corr
+
 ```
 
-## Display pmra/pmdec plot
+
 
 ```{r}
-#ggplot(pleiades, aes(x=pmra, y=pmdec )) +
-#  geom_point()
-#ggplot(m67, aes(x=pmra, y=pmdec )) +
-#  geom_point()
+
 pleiades$class <- "Pleiades"
 m67$class <-"m67"
 merge <- rbind(pleiades, m67)
@@ -228,8 +188,7 @@ a <- ggplot(merge, aes(x=ra, y=dec )) + geom_point()+ theme(legend.position = "n
 b <- ggplot(merge, aes(x=pmra, y=pmdec)) + geom_point() + theme(legend.position = "none") + xlab("Proper Motion in RA Direction (mas**yr-1)") + ylab("Proper Motion in DEC Direction (mas**yr-1)") +  annotate("text", x=7.5, y=-45, label= "Pleiades") +  annotate("text", x = -6.5, y= -2.5, label = "m67")
 t <- theme(plot.title = element_text(face="bold"))
 a + b + plot_annotation(title = "Appendix X - Location and Proper Motion of Pleiades and m67", theme = t) 
-#ggplot(merge, aes(x = class, y = abM)) + geom_boxplot()
-#ggplot(merge, aes(x = class, y = parallax)) + geom_boxplot()
+
 ```
 
 Right Ascension (RA) and Declination (DEC) are angular distances which are the astronomical equivalents of latitude and longitude. In other words, they are the position of stars within space.
@@ -251,7 +210,6 @@ Looking at the left-side histogram, we see that the m67 cluster has a large coll
 Apparent magnitude is 
 
 
-## HR diagram - use ages of cluster with diagram showing the comparison
 ```{r}
 a <- ggplot(pleiades, aes(x=bp_rp, y=abM)) +
   geom_point(size= 0.5)+ scale_y_reverse()+ xlim(-1,4) + ylim(17,-5) + coord_fixed(0.25) + ggtitle("Pleiades") +
@@ -267,6 +225,9 @@ a + b + plot_annotation(title = "Appendix X - Hertzsprung–Russell diagram betw
 Figure X shows a colour-magnitude diagram of the two clusters. This shows the relationship between the Absolute Magnitude and BP-RP colours. Absolute magnitude is a term referring to the intrinsic brightness of a star, which was calculated using the distance of the star (parallax) with the observed colour from earth (phot_g_mean_mag or apparent magnitude). BP-RP colour represents the colors magnitude of the stars. A smaller BP-RP number indicates that the star appears bluer, and thus hotter; meanwhile a large BP-RP implies that the star has cooled off and is redder in appearance.
 
 From this diagram we are able to estimate the age of the clusters (Palma, 2020). Pleiades has most of its stars on the 'main sequence', where they burn their hydrogen throughout their life time. On the other hand, many of the stars in M67 tails off of the main sequence, meaning they are dying stars that have already burnt out of hydrogen. As a consequence they move slower and fall behind. Therefore, we can conclude that the Pleiades is a much younger cluster that is still moving and burning; whereas M67 is older, and slowing down.  Note that this is outside the scope of the EDA, but is useful to show to guide future analysis.
+
+# Individual Contributions [1 page] 
+
 
 # References
 
@@ -288,30 +249,3 @@ Héctor Cánovas. (2022). Use Cases. European Space Agency. https://www.cosmos.e
 
 
 
-
-Individual Contributions [1 page] 
-
-• State what contribution each member of the group made to the data preparation, the analysis and the report 
-
-Overall Report
-These marks will be awarded for overall presentation, clarity and quality of the report. In particular, marks will be awarded for 
-
-• A clear logical layout 
-
-• Keeping to the page limits for each section, and using sensible font size
-
-• Key facts being easily located
-
-• Readability of tables and plots DATA 301 T2 2022 5 
-
-• Clarity of expression [Note: for non-native speakers of English: your English does not need to be perfect, it is the logic and correctness of your presentation that is most important. Nevertheless you are advised to get someone to proof-read your proposal.] 
-
-• Clear explanation of how your choice of exploratory plots and tables is relevant to your project, and how the ethical considerations apply to your project (i.e. not just a set of generalities) 
-
-• Make sure each time you use/refer to someone else’s work you cite the source in the text, and include the reference in the list at the end. It does not need to be a long list; you may only need one or two references. 
-
-• Referencing should be correctly done: a complete list of references must be included. You can use any referencing style you wish; APA is fine if that’s what you like. 
-
-Total: 35 marks 
-
-You will be expected to include a revised version of the Background, Ethics and EDA sections in the final project report; you do not have to rewrite those sections from scratch. You will be expected to consider any feedback you have received for this first report when revising it for the final report, and this will be taken into account when the final report is marked.
