@@ -156,9 +156,9 @@ The mean parallax angle of the Pleiades cluster is greater than the parallax of 
 
 The mean bp_rp of the Pleiades cluster is greater than the mean bp_rp of the M67 cluster which means on average, Pleiades has redder stars than M67. Which in turn means that on average M67 has hotter stars than Pleiades.
 
-The mean absolute magnitude of M67 is greater than the mean absolute magnitude of Pleiades which means the M67 cluster has, on average, intrinsically brighter stars than the Pleiades cluster.
+The mean absolute magnitude of M67 is less than the mean absolute magnitude of Pleiades which means the M67 cluster has, on average, intrinsically brighter stars than the Pleiades cluster.
 
-We know that the stars in M67 are hotter and brighter than those in Pleiades which indicates that, on average, the stars in M67 are younger than those in Pleiades.
+We see that the stars in M67 are hotter and brighter than those in Pleiades which indicates that, on average, the stars in M67 are younger than those in Pleiades. m67 is a far older cluster than Pleiades, so it should have younger stars on average. This may be due to the sample being candidate stars of the cluster, meaning that this might be inaccurate to the actual clusters' age.
 
 
 
