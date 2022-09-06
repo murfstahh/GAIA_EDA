@@ -24,7 +24,7 @@ This work has made use of data from the European Space Agency (ESA) mission Gaia
 
 
 
-# Background and Data 
+## Background and Data 
 
 This project has made use of the GAIA data set produced by the European Space Agency, from mission GAIA (https://www.cosmos.esa.int/gaia). Mission GAIA is launched to record the movement and position of billion objects in the sky, with a purpose to gain deeper understanding of the history and evolution of the Galaxy.
 
@@ -80,7 +80,7 @@ Absolute magnitude is the intrinsic brightness of a star. This is calculated wit
 
 We chose these paticular features because we wanted to isolate the most consistent, non-redundant, and relevant features to get the best insight into the GAIA dataset. We wanted a small number of features that are easy to explain because data that is too complex and unexplainable is not valuable. We especially wanted to look at position, distance, temperature, movement and brightness of the stars in the dataset and those are the features we thought would give us the best understanding.
 
-# Ethics, Privacy and Security  
+## Ethics, Privacy and Security  
 
 One of the most important ethical considerations we emphasise is properly acknowledging the authorship of the GAIA data in our project. Authorship and accreditation are ultimately important, especially in scientific research, as they proclaim the contribution one has made to broaden our understanding of a specific matter. Thus, we want to ensure ethical sourcing of the GAIA data by giving credit to the people and institutes that have worked hard to make the GAIA data accessible to the public. Therefore, throughout the report, a frequent acknowledgement will be dedicated to the European Space Agency, and there will be citations of their work.
 
@@ -93,7 +93,7 @@ Lastly, preventing a wrong understanding of the GAIA data is ethical. This raise
 There are few privacy and confidentiality concerns, as the data is not about people and has also been published by the data owner (ESA) for public scientific usage of the data .
 
 
-# Exploratory Data Analysis  
+## Exploratory Data Analysis  
 
 ```{r}
 pleiades <- read.csv("pleiades-result.csv")
@@ -111,7 +111,7 @@ m67$abM <- m67$phot_g_mean_mag - (2.5 * log((m67$distparsecs/10)^2,10))
 
 
 
-## Figure 1,2 - Check for missing values
+### Figure 1,2 - Check for missing values
 
 ```{r}
 colSums(is.na(pleiades))
@@ -127,7 +127,7 @@ There are 1 missing values in "bp_rp". All other features in the m67 dataset hav
 
 
 
-## Figure 3 - Comparison of Means between Clusters
+### Figure 3 - Comparison of Means between Clusters
 
 ```{r}
 
@@ -188,7 +188,7 @@ geom_text(aes(Var2, Var1, label = value),
 
 
 
-## Figure 4 - Pleiades Correlation matrix
+### Figure 4 - Pleiades Correlation matrix
 ```{r}
 pleiades_corr
 
@@ -198,7 +198,7 @@ The heat map, or correlation matrix illustrate the relationship among used varia
 
 Most easily seen from the heat map, abM and bp_rp correlation is very close to 1, meaning they have a strong positively correlated relationship. As absolute magnitude (abM) is a measure of s celestial object’s intrinsic luminosity, it makes sense to be highly correlated with bp_rp, the color magnitude. A smaller bp_rp indicates that the star is bluer, meaning that it is hotter. Hotter and bluer stars are normally younger ones that remain on the main sequence where it burns its hydrogen ( will be further discussed in the HR diagram below). Meanwhile, older stars appear redder, while in fact colder with a greater bp_rp number. These old stars have mostly burnt up all of their hydrogen, and slowly dying. The process of burning hydrogen increases its luminosity and thus putting it on a higher end of abM.
 
-## Figure 5 - Location and Proper Motion of Pleiades and m67
+### Figure 5 - Location and Proper Motion of Pleiades and m67
 
 ```{r}
 
@@ -218,7 +218,7 @@ The left-side scatterplot illustrate the position of the stars within space, usi
 
 Meanwhile, the right-side scatterplot illustrate the proper motion of the stars, using (pmra) and (pmdec) variables. The proper motions are astronomical equivalents of the movement of the stars in space. Looking at the right-side graph, there again is clear separation in the plots, representing the different directions the clusters are travelling in. The M67 cluster is travelling negatively in both RA and DEC, while the pleiades cluster is travelling positively in RA and more negatively in DEC (compared to the M67 cluster).
 
-## Figure 6 - Parallax and Apparent Magnitude of Pleiades and m67
+### Figure 6 - Parallax and Apparent Magnitude of Pleiades and m67
 ```{r}
 c <- ggplot(merge, aes(x = parallax)) + geom_histogram(aes(fill= class), position = "dodge") + theme(legend.position = "none") + xlab("Parallax (mas)") + ylab("Count") 
 d <- ggplot(merge, aes(x = phot_g_mean_mag)) + geom_histogram(aes(fill= class), position = "dodge") + xlab("Apparent Magnitude (mag)") + ylab("Count") + labs(fill = "Cluster")
@@ -231,7 +231,7 @@ Looking at the left-side histogram, we see that the m67 cluster has a large coll
 
 Apparent magnitude is the perceived brightness of a star, which relates to the brightness that we can see from earth. The lower the magnitude, the brighter the star. Both clusters appear to have quite similar Apparent magnitudes, with m67 possibly appearing slightly brighter. But accounting for the distance from earth of the stars, m67 will be even more intrinsically brighter compared to Pleiades, as the m67 cluster is further away and therefore will look less brighter than it actually is.
 
-## Figure 7 - Hertzsprung–Russell diagram between 2 open clusters
+### Figure 7 - Hertzsprung–Russell diagram between 2 open clusters
 ```{r}
 a <- ggplot(pleiades, aes(x=bp_rp, y=abM)) +
   geom_point(size= 0.5)+ scale_y_reverse()+ xlim(-1,4) + ylim(17,-5) + coord_fixed(0.25) + ggtitle("Pleiades") +
@@ -248,7 +248,7 @@ Figure X shows a colour-magnitude diagram of the two clusters. This shows the re
 
 From this diagram we are able to estimate the age of the clusters (Palma, 2020). Pleiades has most of its stars on the 'main sequence', where they burn their hydrogen throughout their life time. On the other hand, many of the stars in M67 tails off of the main sequence, meaning they are dying stars that have already burnt out of hydrogen. As a consequence they move slower and fall behind. Therefore, we can conclude that the Pleiades is a much younger cluster that is still moving and burning; whereas M67 is older, and slowing down. Note that this age estimation is outside the scope of the EDA, but the plot is useful to guide future analysis.
 
-# Individual Contributions  
+## Individual Contributions  
 Contribution across the team:
 
 The team has had several meetings, in which we decided on our interest in the topic and identify the information we would like to explore. We also discussed suitable data handling methods and appropriate graphs. Moreover, as a team, we considered and agreed on our approach to our ethical and privacy consideration of our project. In detail, each member contributed by:
@@ -259,7 +259,7 @@ Max conducted the summary view and missing value check for the data set. He also
 
 Van discussed the team’s interest on the GAIA data set on behalf of the whole team, while she also elaborated on the GAIA missions and content briefs. She further reviewed the ethical consideration discussion, and further elaborated on some of Taine’s interpretation on the plots. She also makes sure proper credits and acknowledgement is given to the ESA and ensure the reliability of the citations used.
 
-# References
+## References
 
 Dr Christopher Palma. (2020). Measuring the Age of a Star Cluster. PennState. https://www.e-education.psu.edu/astro801/content/l7_p6.html 
 
