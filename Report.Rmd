@@ -90,7 +90,7 @@ m67 <- read.csv("m67-result.csv")
 m67$distparsecs <- 1/(m67$parallax/1000)
 m67$abM <- m67$phot_g_mean_mag - (2.5 * log((m67$distparsecs/10)^2,10))
 
-
+merge_summary <- rbind(pleiades, m67)
 
 
 ```
@@ -99,6 +99,7 @@ m67$abM <- m67$phot_g_mean_mag - (2.5 * log((m67$distparsecs/10)^2,10))
 ```{r}
 summary(pleiades)
 str(pleiades)
+describe(m67)
 ```
 
 ```{r}
@@ -187,6 +188,32 @@ geom_text(aes(Var2, Var1, label = value),
           color = "black", size = 2)
 ```
 
+#merged correlation
+
+```{r}
+corr <- na.omit(merge_summary)
+cormat <- round(cor(corr),2)
+pandoc.table(cormat)
+
+
+```
+
+```{r}
+melted_cormat <- melt(cormat)
+ggplot(data = melted_cormat, aes(Var2, Var1, fill = value)) +
+ geom_tile(color = "white") +
+ scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+   midpoint = 0, limit = c(-1,1), space = "Lab", 
+   name="Pearson\nCorrelation\nof\nFeatures") +
+  theme_minimal()+ 
+ theme(axis.text.x = element_text(angle = 45, vjust = 1, 
+    size = 12, hjust = 1))+
+ coord_fixed()+
+  xlab("Variable 2") + ylab("Variable 1") + ggtitle("Correlation of Features")+geom_tile() +
+geom_text(aes(Var2, Var1, label = value),
+          color = "black", size = 2)
+
+```
 #correlation matrices
 ```{r}
 par(mfrow=c(1,2))
