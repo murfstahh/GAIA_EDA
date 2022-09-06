@@ -145,9 +145,16 @@ colnames(sumtable) <- c("Means of Pleiades Dataset", "Means of M67 Dataset")
 sumtable
 knitr::kable(sumtable)
 ```
-The Right Ascension of M67 is greater than the Right Ascension of Pleiades which means that the M67 cluster is further eastward along the celestial equator from the Sun than the Pleiades cluster.
+The mean Right Ascension of M67 is greater than the mean Right Ascension of Pleiades which means that the M67 cluster is further eastward along the celestial equator from the Sun than the Pleiades cluster.
 
-The declination of Pleiades is greater than the declination of M67 which means that the Pleiades cluster is further North of the celestial sphere than the M67 cluster.
+The mean declination of Pleiades is greater than the mean declination of M67 which means that the Pleiades cluster is further North of the celestial sphere than the M67 cluster.
+
+The mean proper motion Right Ascension of Pleiades is positive while the mean proper motion Right Ascension of M67 is negative meaning that the Pleiades cluster is moving eastward along the celestial equator while the M67 cluster is moving westward of the celestial equator.
+
+The mean proper motion declination of M67 and Pleiades are negative but the Pleiades cluster has a much greater absolute value than M67 so the Pleiades cluster moves South of the celestial sphere faster than the M67 cluster.
+
+
+
 
 
 
